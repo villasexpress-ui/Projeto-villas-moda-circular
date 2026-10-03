@@ -1,8 +1,0 @@
-{
-  "name": "projeto-villas-moda-circular",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@netlify/blobs": "latest"
-  }
-}
