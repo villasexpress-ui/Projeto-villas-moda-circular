@@ -14,42 +14,842 @@
 .overlay{position:fixed;inset:0;background:#17241dcc;display:none;align-items:center;justify-content:center;padding:15px;z-index:10;backdrop-filter:blur(5px)}.overlay.show{display:flex}.modal{background:var(--paper);width:min(680px,100%);max-height:92vh;overflow:auto;border-radius:28px;padding:25px;box-shadow:var(--shadow)}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.modal-head h2{font:400 28px 'Playfair Display',Georgia,serif;color:var(--forest);margin:0}.close{border:0;background:#ecefe7;width:38px;height:38px;border-radius:50%;font-size:24px;color:var(--forest)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input,.field textarea,.field select{width:100%;border-radius:14px}.field textarea{min-height:85px;resize:vertical}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}.primary{background:var(--forest);color:var(--cream);border:0;border-radius:99px;padding:13px 20px;font-weight:700}.secondary{background:transparent;border:1px solid var(--line);color:var(--forest);border-radius:99px;padding:13px 20px}.admin-list{display:grid;gap:9px;margin-top:20px}.admin-row{display:flex;align-items:center;gap:12px;background:var(--white);padding:11px;border:1px solid var(--line);border-radius:17px}.admin-row img{width:54px;height:62px;object-fit:cover;background:#e5dfd0;border-radius:12px}.admin-info{flex:1;min-width:0}.admin-info strong{display:block;color:var(--forest);font-size:13px}.admin-info small{color:var(--muted)}.small-btn{border:1px solid var(--line);background:transparent;color:var(--forest);padding:9px 13px;border-radius:99px;font-size:11px}.delete{color:#9b3730}.notice{font-size:11px;color:var(--muted);line-height:1.6}.hidden{display:none!important}
 
 .top-links{display:flex;align-items:center;gap:24px;margin-left:auto;margin-right:24px}.top-links a{font-size:12px;color:var(--muted);transition:color .2s}.top-links a:hover{color:var(--forest)}.about{display:flex;align-items:center;gap:clamp(25px,6vw,76px);padding-top:30px;padding-bottom:76px}.about-mark{flex:0 0 clamp(100px,17vw,190px);width:clamp(100px,17vw,190px);aspect-ratio:1;border-radius:50% 50% 50% 12%;background:var(--sand);display:grid;place-items:center;color:var(--forest);font:clamp(55px,9vw,100px) 'Playfair Display',serif}.about-copy{max-width:650px}.about-copy h2{font:400 clamp(31px,4vw,45px) 'Playfair Display',Georgia,serif;color:var(--forest);margin:0 0 15px}.about-copy p{font-size:14px;line-height:1.9;color:#687264;margin:8px 0;max-width:600px}.donate strong{display:block;margin-top:8px;color:var(--forest);font-weight:700}.donate h2{margin-bottom:12px}@media(max-width:650px){.top-links{gap:12px;margin-right:10px}.top-links a{font-size:10px}.admin-open{padding:9px 11px;font-size:10px}.about{display:block;padding-top:12px;padding-bottom:55px}.about-mark{width:86px;margin-bottom:24px}.about-copy p{font-size:13px}}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-inner{min-height:400px}}@media(max-width:650px){.top{height:68px;padding:0 5vw}.hero{padding:16px 4vw 36px}.hero-inner{min-height:430px;padding:34px 25px;border-radius:27px 27px 82px 27px}.hero h1{font-size:49px}.hero p{font-size:13px}.hero-orbit{right:-80px;bottom:-120px}.wrap{padding:48px 5vw 60px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.photo{border-radius:18px 18px 48px 18px}.card h3{font-size:18px}.section-head{display:block}.filters input{min-width:100%}.filters select{flex:1}.donate{padding:0 4vw 45px}.donate-inner{display:block;border-radius:27px 27px 27px 75px;padding:30px 25px}.donate .btn{margin-top:20px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-row{flex-wrap:wrap}.admin-info{min-width:calc(100% - 85px)}.admin-row .small-btn{flex:1}.modal{border-radius:22px;padding:20px}.signature{line-height:1.7}}
-</style></head>
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-inner{min-height:400px}}@media(max-width:650px){.top{height:68px;padding:0 5vw}.hero{padding:16px 4vw 36px}.hero-inner{min-height:430px;padding:34px 25px;border-radius:27px 27px 82px 27px}.hero h1{font-size:49px}.hero p{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}.wrap{padding:52px 5vw 65px}.section-head{display:block}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.donate-inner{display:block;border-radius:27px 27px 27px 75px}.donate .btn{margin-top:20px}.modal{padding:20px}.admin-row{flex-wrap:wrap}.admin-info{min-width:150px}}
+</style>
+</head>
 <body>
-<header class="top"><div class="brand"><div class="brand-mark">V</div><div><div class="brand-name">Projeto Villas</div><div class="brand-sub">MODA CIRCULAR</div></div></div><nav class="top-links"><a href="#sobre">Sobre</a><a href="#catalogo">Catálogo</a><a href="#doacao">Doações</a></nav><button class="admin-open" id="openAdmin">Área administrativa ↗</button></header>
-<section class="hero"><div class="hero-inner"><div class="hero-copy"><div class="eyebrow">Consumo consciente · Reuso · Novas histórias</div><h1>Moda que<br><em>segue em frente.</em></h1><p>Roupas com novas histórias. Descubra peças especiais, escolha suas favoritas e faça parte de um jeito mais consciente de consumir.</p><div class="hero-actions"><a class="btn btn-light" href="#catalogo">Explorar catálogo <span>↗</span></a><a class="btn btn-outline" href="#doacao">Quero doar roupas</a></div><div class="signature">PROJETO VILLAS <span>· RCJ USADOS</span></div></div><div class="hero-orbit"></div></div></section>
-<main id="catalogo" class="wrap"><div class="section-head"><div><div class="section-kicker">Garimpo consciente</div><h2>Peças disponíveis</h2><p>Encontre algo especial para chamar de seu.</p></div></div><div class="filters"><input id="search" placeholder="Buscar uma peça..."><select id="category"><option value="">Todas as categorias</option><option>Camisetas</option><option>Camisas</option><option>Calças</option><option>Bermudas</option><option>Jaquetas</option><option>Vestidos</option><option>Saias</option><option>Calçados</option><option>Acessórios</option><option>Outros</option></select></div><div id="products" class="grid"><div class="empty">Preparando o catálogo...</div></div></main>
-<section id="sobre" class="about wrap"><div class="about-mark">V</div><div class="about-copy"><div class="section-kicker">Nossa ideia</div><h2>Sobre o Projeto</h2><p>O Projeto Villas Moda Circular nasceu da vontade de dar um novo destino às roupas, valorizando o que já existe.</p><p>Peças usadas e customizadas com preços acessíveis, incentivando um consumo mais consciente.</p></div></section>
-<section id="doacao" class="donate"><div class="donate-inner"><div><div class="donate-kicker">Faça parte desse ciclo</div><h2>Doe suas roupas</h2><p>Tem roupas em bom estado e quer ajudar? Sua doação pode ganhar uma nova história.<br><strong>Toda peça conta!</strong></p></div><a class="btn" id="donateBtn" target="_blank" rel="noopener">Quero doar roupas ↗</a></div></section>
-<footer class="footer"><strong>Projeto Villas</strong>MODA CIRCULAR <span style="opacity:.55">· RCJ USADOS</span></footer>
-<div class="overlay" id="adminOverlay"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Área administrativa</h2><button class="close" id="closeAdmin" aria-label="Fechar">×</button></div>
-<div id="loginArea"><p class="notice">Entre com a senha de administrador para gerenciar as peças do catálogo.</p><div class="field"><label for="adminPassword">Senha</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Digite a senha"></div><div class="modal-actions"><button class="primary" id="loginBtn">Entrar</button></div><p id="loginError" class="notice"></p></div>
-<div id="manageArea" class="hidden"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><p class="notice">As alterações ficam disponíveis para todos os visitantes.</p><button class="primary" id="newProduct">+ Adicionar roupa</button></div><div id="adminList" class="admin-list"></div><div class="modal-actions"><button class="secondary" id="logoutBtn">Sair do painel</button></div></div>
-<div id="productFormArea" class="hidden"><form id="productForm"><input type="hidden" id="productId"><div class="form-grid"><div class="field full"><label for="pName">Nome da peça *</label><input id="pName" required maxlength="90" placeholder="Ex.: Jaqueta jeans vintage"></div><div class="field"><label for="pPrice">Preço (R$) *</label><input id="pPrice" required inputmode="decimal" placeholder="45,00"></div><div class="field"><label for="pCategory">Categoria</label><select id="pCategory"><option>Outros</option><option>Camisetas</option><option>Camisas</option><option>Calças</option><option>Bermudas</option><option>Jaquetas</option><option>Vestidos</option><option>Saias</option><option>Calçados</option><option>Acessórios</option></select></div><div class="field"><label for="pSize">Tamanho</label><input id="pSize" maxlength="30" placeholder="Ex.: M, 40, único"></div><div class="field"><label for="pCondition">Estado da peça</label><input id="pCondition" maxlength="50" placeholder="Ex.: Muito bom estado"></div><div class="field full"><label for="pDescription">Descrição</label><textarea id="pDescription" maxlength="500" placeholder="Detalhes, medidas ou observações..."></textarea></div><div class="field full"><label for="pImage">Foto da peça *</label><input id="pImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><span class="notice">Imagem JPG, PNG, WEBP ou GIF. Até 2 MB. Se estiver editando, deixe vazio para manter a foto atual.</span><div id="imagePreview"></div></div></div><div class="modal-actions"><button type="button" class="secondary" id="cancelForm">Cancelar</button><button type="submit" class="primary" id="saveProduct">Salvar peça</button></div><p id="formError" class="notice"></p></form></div>
-</div></div>
+
+<header class="top">
+<div class="brand">
+<div class="brand-mark">V</div>
+<div>
+<div class="brand-name">Projeto Villas</div>
+<div class="brand-sub">MODA CIRCULAR</div>
+</div>
+</div>
+<nav class="top-links">
+<a href="#catalogo">Catálogo</a>
+<a href="#sobre">Sobre</a>
+</nav>
+<button class="admin-open" id="openAdmin">Área administrativa</button>
+</header>
+
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-copy">
+<div class="eyebrow">MODA CIRCULAR · CONSUMO CONSCIENTE</div>
+<h1>Moda que <em>circula.</em><br>Propósito que permanece.</h1>
+<p>Peças selecionadas para ganhar uma nova história. O Projeto Villas transforma roupas em novas possibilidades, unindo estilo, acessibilidade e responsabilidade.</p>
+<div class="hero-actions">
+<a href="#catalogo" class="btn btn-light">Ver catálogo ↓</a>
+<a href="#sobre" class="btn btn-outline">Conheça o projeto</a>
+</div>
+<div class="signature">PROJETO VILLAS <span>MODA CIRCULAR</span></div>
+</div>
+<div class="hero-orbit"></div>
+</div>
+</section>
+
+<section class="wrap" id="catalogo">
+<div class="section-head">
+<div>
+<div class="section-kicker">GARIMPO CONSCIENTE</div>
+<h2>Peças disponíveis</h2>
+<p>Escolha sua próxima peça e dê uma nova vida a ela.</p>
+</div>
+</div>
+
+<div class="filters">
+<input id="search" placeholder="Buscar peça...">
+<select id="category">
+<option value="">Todas as categorias</option>
+<option>Camisetas</option>
+<option>Camisas</option>
+<option>Calças</option>
+<option>Bermudas</option>
+<option>Jaquetas</option>
+<option>Vestidos</option>
+<option>Saias</option>
+<option>Calçados</option>
+<option>Acessórios</option>
+<option>Outros</option>
+</select>
+</div>
+
+<div class="grid" id="products">
+<div class="empty">Carregando catálogo...</div>
+</div>
+</section>
+
+<section class="wrap about" id="sobre">
+<div class="about-mark">V</div>
+<div class="about-copy">
+<div class="section-kicker">SOBRE O PROJETO</div>
+<h2>Mais que roupas.</h2>
+<p>O Projeto Villas nasceu com uma ideia simples: fazer a moda circular de verdade. Peças que poderiam ficar esquecidas ganham novas oportunidades e chegam a pessoas que podem aproveitá-las.</p>
+<p>Comprar de segunda mão é escolher estilo com consciência, reduzir desperdícios e prolongar a vida das roupas.</p>
+</div>
+</section>
+
+<section class="donate">
+<div class="donate-inner">
+<div>
+<div class="donate-kicker">TEM ROUPAS PARADAS?</div>
+<h2>Doe. Circule. Transforme.</h2>
+<p>Se você possui roupas em bom estado que não usa mais, entre em contato conosco. Sua peça pode fazer parte de uma nova história.</p>
+<strong>Ajude a moda a continuar circulando.</strong>
+</div>
+<a class="btn" id="donateBtn" target="_blank" rel="noopener">Quero doar ↗</a>
+</div>
+</section>
+
+<footer class="footer">
+<strong>Projeto Villas</strong>
+MODA CIRCULAR · CONSUMO CONSCIENTE
+</footer>
+
+<div class="overlay" id="adminOverlay">
+<div class="modal">
+<div class="modal-head">
+<h2 id="modalTitle">Área administrativa</h2>
+<button class="close" id="closeAdmin">×</button>
+</div>
+
+<div id="loginArea">
+<p class="notice">Entre para gerenciar o catálogo.</p>
+<div class="field">
+<label for="adminPassword">Senha</label>
+<input id="adminPassword" type="password" placeholder="Digite a senha">
+</div>
+<div class="modal-actions">
+<button class="primary" id="loginBtn">Entrar</button>
+</div>
+<p id="loginError" class="notice"></p>
+</div>
+
+<div id="manageArea" class="hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+<p class="notice">As alterações ficam disponíveis para todos os visitantes.</p>
+<button class="primary" id="newProduct">+ Adicionar roupa</button>
+</div>
+<div id="adminList" class="admin-list"></div>
+<div class="modal-actions">
+<button class="secondary" id="logoutBtn">Sair do painel</button>
+</div>
+</div>
+
+<div id="productFormArea" class="hidden">
+<form id="productForm">
+<input type="hidden" id="productId">
+
+<div class="form-grid">
+
+<div class="field full">
+<label for="pName">Nome da peça *</label>
+<input id="pName" required maxlength="90" placeholder="Ex.: Jaqueta jeans vintage">
+</div>
+
+<div class="field">
+<label for="pPrice">Preço (R$) *</label>
+<input id="pPrice" required inputmode="decimal" placeholder="45,00">
+</div>
+
+<div class="field">
+<label for="pCategory">Categoria</label>
+<select id="pCategory">
+<option>Outros</option>
+<option>Camisetas</option>
+<option>Camisas</option>
+<option>Calças</option>
+<option>Bermudas</option>
+<option>Jaquetas</option>
+<option>Vestidos</option>
+<option>Saias</option>
+<option>Calçados</option>
+<option>Acessórios</option>
+</select>
+</div>
+
+<div class="field">
+<label for="pSize">Tamanho</label>
+<input id="pSize" maxlength="30" placeholder="Ex.: M, 40, único">
+</div>
+
+<div class="field">
+<label for="pCondition">Estado da peça</label>
+<input id="pCondition" maxlength="50" placeholder="Ex.: Muito bom estado">
+</div>
+
+<div class="field full">
+<label for="pDescription">Descrição</label>
+<textarea id="pDescription" maxlength="500" placeholder="Detalhes, medidas ou observações..."></textarea>
+</div>
+
+<div class="field full">
+<label for="pImage">Foto da peça *</label>
+<input id="pImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+<span class="notice">Imagem JPG, PNG, WEBP ou GIF. Até 2 MB. Se estiver editando, deixe vazio para manter a foto atual.</span>
+<div id="imagePreview"></div>
+</div>
+
+</div>
+
+<div class="modal-actions">
+<button type="button" class="secondary" id="cancelForm">Cancelar</button>
+<button type="submit" class="primary" id="saveProduct">Salvar peça</button>
+</div>
+
+<p id="formError" class="notice"></p>
+</form>
+</div>
+
+</div>
+</div>
+
 <script>
 const API='/.netlify/functions/catalog';
 const WHATSAPP='5511999337055';
+
 const $=id=>document.getElementById(id);
-let products=[],adminPassword='',editingImage='';
-const money=value=>Number(value||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+let products=[];
+let adminPassword='';
+let editingImage='';
+
+const money=value=>Number(value||0).toLocaleString('pt-BR',{
+style:'currency',
+currency:'BRL'
+});
+
 const wa=(message)=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
-$('donateBtn').href=wa('Olá! Gostaria de saber como posso doar roupas para o Projeto Villas - Moda Circular.');
-async function api(payload,method='POST'){const response=await fetch(API,{method,headers:method==='POST'?{'Content-Type':'application/json'}:undefined,body:method==='POST'?JSON.stringify(payload):undefined});let data={};try{data=await response.json()}catch{}if(!response.ok)throw new Error(data.error||'Não foi possível concluir.');return data}
-async function loadProducts(){try{const data=await api(null,'GET');products=Array.isArray(data.products)?data.products:[];renderProducts();}catch(error){$('products').innerHTML='<div class="empty">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</div>';}}
-function renderProducts(){const query=$('search').value.trim().toLowerCase(),category=$('category').value;const list=products.filter(p=>(!category||p.category===category)&&(!query||[p.name,p.description,p.category,p.size].join(' ').toLowerCase().includes(query)));if(!list.length){$('products').innerHTML='<div class="empty">Nenhuma peça encontrada por aqui no momento.</div>';return}$('products').innerHTML=list.map(p=>`<article class="card"><div class="photo">${p.image?`<img src="${p.image}" alt="${esc(p.name)}" loading="lazy">`:'<span class="no-photo">Projeto Villas</span>'}</div><div class="card-body"><div class="category">${esc(p.category||'Outros')}</div><h3>${esc(p.name)}</h3><div class="price">${money(p.price)}</div><div class="details">${[p.size?'Tamanho: '+p.size:'',p.condition||'',p.description||''].filter(Boolean).map(esc).join('<br>')}</div><button class="interest" data-interest="${esc(p.id)}">Tenho interesse ↗</button></div></article>`).join('');document.querySelectorAll('[data-interest]').forEach(btn=>btn.addEventListener('click',()=>{const p=products.find(x=>String(x.id)===btn.dataset.interest);if(p)window.open(wa(`Olá! Tenho interesse nesta peça do Projeto Villas: ${p.name} — ${money(p.price)}.`),'_blank','noopener')}));}
-function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function show(area){$('loginArea').classList.toggle('hidden',area!=='login');$('manageArea').classList.toggle('hidden',area!=='manage');$('productFormArea').classList.toggle('hidden',area!=='form');$('modalTitle').textContent=area==='login'?'Área administrativa':area==='manage'?'Gerenciar catálogo':'Cadastro de peça';}
-$('openAdmin').onclick=()=>{$('adminOverlay').classList.add('show');show(adminPassword?'manage':'login');if(adminPassword)renderAdmin();};$('closeAdmin').onclick=()=>{$('adminOverlay').classList.remove('show');};$('adminOverlay').addEventListener('click',e=>{if(e.target===$('adminOverlay'))$('adminOverlay').classList.remove('show')});
-$('loginBtn').onclick=async()=>{const password=$('adminPassword').value;if(!password){$('loginError').textContent='Digite a senha.';return}try{await api({action:'login',password});adminPassword=password;$('loginError').textContent='';show('manage');renderAdmin()}catch(e){$('loginError').textContent=e.message}};
-$('logoutBtn').onclick=()=>{adminPassword='';$('adminPassword').value='';show('login')};
-function renderAdmin(){$('adminList').innerHTML=products.length?products.map(p=>`<div class="admin-row">${p.image?`<img src="${p.image}" alt="">`:'<div style="width:54px;height:62px;background:#e5dfd0"></div>'}<div class="admin-info"><strong>${esc(p.name)}</strong><small>${money(p.price)} · ${esc(p.category||'Outros')}</small></div><button class="small-btn" data-edit="${esc(p.id)}">Editar</button><button class="small-btn delete" data-delete="${esc(p.id)}">Excluir</button></div>`).join(''):'<div class="empty">Ainda não há roupas cadastradas. Clique em “Adicionar roupa”.</div>';document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteProduct(b.dataset.delete));}
-function openForm(p=null){$('productForm').reset();$('productId').value=p?.id||'';$('pName').value=p?.name||'';$('pPrice').value=p?String(p.price).replace('.',','):'';$('pCategory').value=p?.category||'Outros';$('pSize').value=p?.size||'';$('pCondition').value=p?.condition||'';$('pDescription').value=p?.description||'';editingImage=p?.image||'';$('imagePreview').innerHTML=editingImage?`<img src="${editingImage}" alt="Foto atual" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`:'';$('formError').textContent='';show('form');}
-function editProduct(id){const p=products.find(x=>String(x.id)===String(id));if(p)openForm(p)}
-$('newProduct').onclick=()=>openForm();$('cancelForm').onclick=()=>{show('manage');renderAdmin()};
-$('pImage').onchange=()=>{const file=$('pImage').files[0];if(!file){$('imagePreview').innerHTML=editingImage?`<img src="${editingImage}" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`:'';return}if(file.size>2*1024*1024){$('formError').textContent='A imagem precisa ter até 2 MB.';$('pImage').value='';return}const reader=new FileReader();reader.onload=()=>{$('imagePreview').innerHTML=`<img src="${reader.result}" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`};reader.readAsDataURL(file)};
-$('productForm').onsubmit=async e=>{e.preventDefault();$('formError').textContent='';const file=$('pImage').files[0];let image=editingImage;if(file){if(file.size>2*1024*1024){$('formError').textContent='A imagem precisa ter até 2 MB.';return}image=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)})}if(!image){$('formError').textContent='Adicione uma foto para a peça.';return}const price=Number($('pPrice').value.trim().replace(/\./g,'').replace(',','.'));if(!Number.isFinite(price)||price<0){$('formError').textContent='Confira o preço informado.';return}const product={id:$('productId').value||String(Date.now()),name:$('pName').value.trim(),price,category:$('pCategory').value,size:$('pSize').value.trim(),condition:$('pCondition').value.trim(),description:$('pDescription').value.trim(),image};try{$('saveProduct').disabled=true;await api({action:'save',password:adminPassword,product});await loadProducts();show('manage');renderAdmin()}catch(err){$('formError').textContent=err.message}finally{$('saveProduct').disabled=false}};
-async function deleteProduct(id){const p=products.find(x=>String(x.id)===String(id));if(!p||!confirm(`Excluir “${p.name}” do catálogo?`))return;try{await api({action:'delete',password:adminPassword,id});await loadProducts();renderAdmin()}catch(e){alert(e.message)}}
-$('search').addEventListener('input',renderProducts);$('category').addEventListener('change',renderProducts);loadProducts();
-</script></body></html>
+
+$('donateBtn').href=wa(
+'Olá! Gostaria de saber como posso doar roupas para o Projeto Villas - Moda Circular.'
+);
+
+async function api(payload,method='POST'){
+
+const controller=new AbortController();
+
+const timer=setTimeout(
+()=>controller.abort(),
+20000
+);
+
+try{
+
+const response=await fetch(API,{
+method,
+headers:method==='POST'
+?{'Content-Type':'application/json'}
+:undefined,
+body:method==='POST'
+?JSON.stringify(payload)
+:undefined,
+signal:controller.signal
+});
+
+let data={};
+
+try{
+data=await response.json();
+}catch{}
+
+if(!response.ok){
+throw new Error(
+data.error||'Não foi possível concluir.'
+);
+}
+
+return data;
+
+}catch(error){
+
+if(error.name==='AbortError'){
+throw new Error(
+'O servidor demorou para responder. Verifique sua conexão e tente salvar novamente.'
+);
+}
+
+throw error;
+
+}finally{
+
+clearTimeout(timer);
+
+}
+}
+
+async function loadProducts(){
+
+try{
+
+const data=await api(null,'GET');
+
+products=Array.isArray(data.products)
+?data.products
+:[];
+
+renderProducts();
+
+}catch(error){
+
+$('products').innerHTML=
+'<div class="empty">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</div>';
+
+}
+}
+
+function renderProducts(){
+
+const query=$('search').value.trim().toLowerCase();
+
+const category=$('category').value;
+
+const list=products.filter(p=>
+(!category||p.category===category)&&
+(!query||
+[p.name,p.description,p.category,p.size]
+.join(' ')
+.toLowerCase()
+.includes(query))
+);
+
+if(!list.length){
+
+$('products').innerHTML=
+'<div class="empty">Nenhuma peça encontrada por aqui no momento.</div>';
+
+return;
+}
+
+$('products').innerHTML=list.map(p=>`
+
+<article class="card">
+
+<div class="photo">
+
+${p.image
+?`<img src="${p.image}" alt="${esc(p.name)}" loading="lazy">`
+:'<span class="no-photo">Projeto Villas</span>'}
+
+</div>
+
+<div class="card-body">
+
+<div class="category">
+${esc(p.category||'Outros')}
+</div>
+
+<h3>
+${esc(p.name)}
+</h3>
+
+<div class="price">
+${money(p.price)}
+</div>
+
+<div class="details">
+
+${[
+p.size?'Tamanho: '+p.size:'',
+p.condition||'',
+p.description||''
+]
+.filter(Boolean)
+.map(esc)
+.join('<br>')}
+
+</div>
+
+<button
+class="interest"
+data-interest="${esc(p.id)}">
+Tenho interesse ↗
+</button>
+
+</div>
+
+</article>
+
+`).join('');
+
+document.querySelectorAll('[data-interest]')
+.forEach(btn=>
+btn.addEventListener('click',()=>{
+
+const p=products.find(
+x=>String(x.id)===btn.dataset.interest
+);
+
+if(p){
+
+window.open(
+wa(
+`Olá! Tenho interesse nesta peça do Projeto Villas: ${p.name} — ${money(p.price)}.`
+),
+'_blank',
+'noopener'
+);
+
+}
+
+})
+);
+}
+
+function esc(value){
+
+return String(value??'').replace(
+/[&<>"']/g,
+c=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[c])
+);
+
+}
+
+function show(area){
+
+$('loginArea')
+.classList
+.toggle('hidden',area!=='login');
+
+$('manageArea')
+.classList
+.toggle('hidden',area!=='manage');
+
+$('productFormArea')
+.classList
+.toggle('hidden',area!=='form');
+
+$('modalTitle').textContent=
+area==='login'
+?'Área administrativa'
+:area==='manage'
+?'Gerenciar catálogo'
+:'Cadastro de peça';
+
+}
+
+$('openAdmin').onclick=()=>{
+
+$('adminOverlay').classList.add('show');
+
+show(
+adminPassword
+?'manage'
+:'login'
+);
+
+if(adminPassword)
+renderAdmin();
+
+};
+
+$('closeAdmin').onclick=()=>{
+
+$('adminOverlay').classList.remove('show');
+
+};
+
+$('adminOverlay').addEventListener(
+'click',
+e=>{
+
+if(e.target===$('adminOverlay')){
+
+$('adminOverlay').classList.remove('show');
+
+}
+
+}
+);
+
+$('loginBtn').onclick=async()=>{
+
+const password=$('adminPassword').value;
+
+if(!password){
+
+$('loginError').textContent=
+'Digite a senha.';
+
+return;
+
+}
+
+try{
+
+await api({
+action:'login',
+password
+});
+
+adminPassword=password;
+
+$('loginError').textContent='';
+
+show('manage');
+
+renderAdmin();
+
+}catch(e){
+
+$('loginError').textContent=e.message;
+
+}
+
+};
+
+$('logoutBtn').onclick=()=>{
+
+adminPassword='';
+
+$('adminPassword').value='';
+
+show('login');
+
+};
+
+function renderAdmin(){
+
+$('adminList').innerHTML=
+products.length
+?products.map(p=>`
+
+<div class="admin-row">
+
+${
+p.image
+?`<img src="${p.image}" alt="">`
+:'<div style="width:54px;height:62px;background:#e5dfd0"></div>'
+}
+
+<div class="admin-info">
+
+<strong>
+${esc(p.name)}
+</strong>
+
+<small>
+${money(p.price)} · ${esc(p.category||'Outros')}
+</small>
+
+</div>
+
+<button
+class="small-btn"
+data-edit="${esc(p.id)}">
+Editar
+</button>
+
+<button
+class="small-btn delete"
+data-delete="${esc(p.id)}">
+Excluir
+</button>
+
+</div>
+
+`).join('')
+:'<div class="empty">Ainda não há roupas cadastradas. Clique em “Adicionar roupa”.</div>';
+
+document.querySelectorAll('[data-edit]')
+.forEach(
+b=>b.onclick=()=>editProduct(b.dataset.edit)
+);
+
+document.querySelectorAll('[data-delete]')
+.forEach(
+b=>b.onclick=()=>deleteProduct(b.dataset.delete)
+);
+
+}
+
+function openForm(p=null){
+
+$('productForm').reset();
+
+$('productId').value=
+p?.id||'';
+
+$('pName').value=
+p?.name||'';
+
+$('pPrice').value=
+p
+?String(p.price).replace('.',',')
+:'';
+
+$('pCategory').value=
+p?.category||'Outros';
+
+$('pSize').value=
+p?.size||'';
+
+$('pCondition').value=
+p?.condition||'';
+
+$('pDescription').value=
+p?.description||'';
+
+editingImage=
+p?.image||'';
+
+$('imagePreview').innerHTML=
+editingImage
+?`<img src="${editingImage}" alt="Foto atual" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`
+:'';
+
+$('formError').textContent='';
+
+show('form');
+
+}
+
+function editProduct(id){
+
+const p=products.find(
+x=>String(x.id)===String(id)
+);
+
+if(p)
+openForm(p);
+
+}
+
+$('newProduct').onclick=()=>openForm();
+
+$('cancelForm').onclick=()=>{
+
+show('manage');
+
+renderAdmin();
+
+};
+
+$('pImage').onchange=()=>{
+
+const file=$('pImage').files[0];
+
+if(!file){
+
+$('imagePreview').innerHTML=
+editingImage
+?`<img src="${editingImage}" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`
+:'';
+
+return;
+
+}
+
+if(file.size>2*1024*1024){
+
+$('formError').textContent=
+'A imagem precisa ter até 2 MB.';
+
+$('pImage').value='';
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=()=>{
+
+$('imagePreview').innerHTML=
+`<img src="${reader.result}" style="max-width:110px;max-height:130px;object-fit:cover;margin-top:8px">`;
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+$('productForm').onsubmit=async e=>{
+
+e.preventDefault();
+
+$('formError').textContent='';
+
+const file=$('pImage').files[0];
+
+let image=editingImage;
+
+if(file){
+
+if(file.size>2*1024*1024){
+
+$('formError').textContent=
+'A imagem precisa ter até 2 MB.';
+
+return;
+
+}
+
+image=await new Promise(
+(resolve,reject)=>{
+
+const r=new FileReader();
+
+r.onload=()=>resolve(r.result);
+
+r.onerror=reject;
+
+r.readAsDataURL(file);
+
+}
+);
+
+}
+
+if(!image){
+
+$('formError').textContent=
+'Adicione uma foto para a peça.';
+
+return;
+
+}
+
+const price=Number(
+$('pPrice').value
+.trim()
+.replace(/\./g,'')
+.replace(',','.')
+);
+
+if(!Number.isFinite(price)||price<0){
+
+$('formError').textContent=
+'Confira o preço informado.';
+
+return;
+
+}
+
+const product={
+
+id:$('productId').value||String(Date.now()),
+
+name:$('pName').value.trim(),
+
+price,
+
+category:$('pCategory').value,
+
+size:$('pSize').value.trim(),
+
+condition:$('pCondition').value.trim(),
+
+description:$('pDescription').value.trim(),
+
+image
+
+};
+
+try{
+
+$('saveProduct').disabled=true;
+
+$('saveProduct').textContent=
+'Salvando...';
+
+await api({
+
+action:'save',
+
+password:adminPassword,
+
+product
+
+});
+
+await loadProducts();
+
+show('manage');
+
+renderAdmin();
+
+}catch(err){
+
+console.error(
+'Erro ao salvar peça:',
+err
+);
+
+$('formError').textContent=
+err?.message||
+'Não foi possível salvar a peça. Tente novamente.';
+
+}finally{
+
+$('saveProduct').disabled=false;
+
+$('saveProduct').textContent=
+'Salvar peça';
+
+}
+
+};
+
+async function deleteProduct(id){
+
+const p=products.find(
+x=>String(x.id)===String(id)
+);
+
+if(
+!p||
+!confirm(
+`Excluir “${p.name}” do catálogo?`
+)
+)
+return;
+
+try{
+
+await api({
+
+action:'delete',
+
+password:adminPassword,
+
+id
+
+});
+
+await loadProducts();
+
+renderAdmin();
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+}
+
+$('search').addEventListener(
+'input',
+renderProducts
+);
+
+$('category').addEventListener(
+'change',
+renderProducts
+);
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
